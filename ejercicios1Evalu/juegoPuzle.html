@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: lightblue;
+    }
+    h2 {
+        justify-content: center;
+        display: flex;
+        font-size: 50px;
+    }
+
+    table {
+        margin: 20px auto;
+        border-collapse: collapse;
+    }
+
+    td {
+        border: 1px solid #000;
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h2>Juego del Puzzle</h2>
+    <h2>Tiempo: <span id="tiempo"> </span></h2>
+
+
+    <script src="http://185.60.40.210/dwc/Juegos.js"></script>
+
+    <script>
+        const n = 3;
+        columna = 0;
+        fila = 0;
+        let fila0 = n - 1;
+        let col0 = n - 1
+        let tiempo = 0;
+        let intervalo;
+        let sHtml = ''
+        let finalizado = false;
+        numeros = Aleatorio(n);
+        
+        sHtml += "<table>"
+        for (array of numeros) {
+            sHtml += "<tr>"
+            for (const valor of array) {
+                sHtml += `<td><img src="numeros/n${valor}.gif" id=imbola${fila + "" + columna} onclick="Cambiar(${fila},${columna})"></td>`;
+                columna++;
+            }
+            sHtml += "</tr>"
+            fila++;
+            columna = 0;
+        }
+        sHtml += "</table>"
+        document.write(sHtml);
+
+        function Cambiar(fila, columna) {
+            if (finalizado == false) {
+
+                //recojo fila y columna : 
+                const bola = document.getElementById(`imbola${fila}${columna}`);
+                const bola0 = document.getElementById(`imbola${fila0}${col0}`);
+
+                if (
+                    (columna == col0 && (fila + 1 == fila0 || fila - 1 == fila0)) ||
+                    (fila == fila0 && (columna + 1 == col0 || columna - 1 == col0))
+                ) {
+                    [bola.src, bola0.src] = [bola0.src, bola.src];
+                    [numeros[fila0][col0], numeros[fila][columna]] = [numeros[fila][columna], numeros[fila0][col0]];
+                    col0 = columna;
+                    fila0 = fila;
+
+                    //Comprueba que has ganado + fin de juego 
+                    if (Array.from({ length: n * n - 1 }, (x, i) => i + 1).join(",") + ",0" == numeros.flat()) {
+                        alert("Has ganado");
+                        clearInterval(intervalo);
+                        finalizado = true;
+
+                    }
+
+                } else {
+
+                }
+            }
+        }
+
+        //tiempo : 
+        intervalo = setInterval(() => {
+            tiempo++;
+            document.getElementById('tiempo').innerText = tiempo;
+
+        }, 1000);
+    </script>
+
+</body>
+
+</html>

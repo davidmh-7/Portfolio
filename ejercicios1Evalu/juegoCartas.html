@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Cartas</title>
+</head>
+<style>
+    body {
+        background-image: url("imgPagina/FondoCartas.jpg");
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+        size: 50px;
+        color: white;
+        margin-top: 100px;
+
+    }
+
+    h3 {
+        display: flex;
+        justify-content: center;
+        size: 50px;
+        color: white;
+    }
+
+    table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: white;
+    }
+
+    td {
+        border: 1px solid #000;
+        padding: 10px;
+        text-align: center;
+    }
+
+    p {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<body>
+    <script src="http://185.60.40.210/dwc/Juegos.js"></script>
+    <h2>Juego de Cartas</h2>
+    <h3>Tiempo: <span id="Tiempo"></span></h3>
+    <h3>Clicks: <span id="clicks"></span></h3>
+    <div id="contenedor"></div>
+
+    <script>
+        sHTML = ''
+        let Tiempo = 0
+        let filaArriba = 5
+        let Columna = 10
+        let arrayArriba = [];
+        const cartasvolteadas = CrearTablaCartas(5, 10)
+        let arrayComparar = [];
+        let conclicks = 0;
+
+        const tabla = document.getElementById('contenedor')
+
+        sHTML += '<table>'
+        for (let i = 0; i < filaArriba; i++) {
+            sHTML += '<tr>'
+            arrayArriba[i] = [];
+            for (let j = 0; j < Columna; j++) {
+                sHTML += `<td><img src="cartas/0.png" id="cartas${i + "" + j}" onclick="CambiarImg(${cartasvolteadas[i][j]},${i},${j})"></td>`
+                arrayArriba[i][j] = false;
+            }
+            sHTML += '</tr>'
+        }
+        sHTML += '</table>'
+        tabla.innerHTML = sHTML
+
+
+        function CambiarImg(valor, fila, columna) {
+
+            contadorClicks();
+
+            let carta = document.getElementById(`cartas${fila + "" + columna}`)
+            carta.src = `cartas/${valor}.png`
+
+            arrayArriba[fila][columna] = true;
+
+            arrayComparar.push({ valor, fila, columna })
+
+            //Mira haber si esta undefined porque sino se meteria abajo y daria error
+            if (arrayComparar[1] == undefined) return
+
+            //añade el tiempo de volteo
+            setTimeout(() => {
+
+                if (arrayComparar[0].valor != arrayComparar[1].valor) {
+
+                    for (const cartaComparada of arrayComparar) {
+                        carta = document.getElementById(`cartas${cartaComparada.fila}${cartaComparada.columna}`)
+                        carta.src = `cartas/0.png`
+                        arrayArriba[cartaComparada.fila][cartaComparada.columna] == false;
+                    }
+
+                } arrayComparar = [];
+            }, 1000)
+        }
+
+        //Te pone el tiempo que llevas
+        intervalo = setInterval(() => {
+            Tiempo++;
+            document.getElementById('Tiempo').innerText = Tiempo;
+
+        }, 1000);
+
+        //Recarga la pagina
+        function recargar() {
+            location.reload();
+        }
+
+        //Cuenta los clicks que llevas
+        function contadorClicks() {
+            conclicks++;
+            document.getElementById('clicks').innerHTML= conclicks;
+
+        }
+
+    </script>
+    <p><button id="Reload" onclick="recargar()">Recargar</button></p>
+
+</body>
+
+</html>

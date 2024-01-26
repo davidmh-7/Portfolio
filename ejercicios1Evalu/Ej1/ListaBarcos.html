@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="Examen.css">
+    <script type="text/javascript">
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_showHideLayers() { //v9.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) 
+  with (document) if (getElementById && ((obj=getElementById(args[i]))!=null)) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+    </script>
+</head>
+<body onLoad="MM_preloadImages('Barcos/536.jpg')">
+<h1>BARCOS</h1>
+	
+	
+<p>&nbsp;</p>
+<table width="841" height="392" border="1" align="center">
+  <tbody>
+    <tr>
+      <td width="264" height="324"><img src="Barcos/barco1.jpg" alt=""/></td>
+      <td width="261"><img src="Barcos/barco2.jpg" alt="" id="barco2"/></td>
+      <td width="245"><img src="Barcos/barco3.jpg"  alt=""/></td>
+      <td width="43"><img src="Barcos/barco4.jpg"  alt=""/></td>
+    </tr>
+    <tr>
+      <td height="60"><input name="barco1" type="button" id="barco2ver" style=" left: 394px; top: 440px; height: 35px; width: 86px;" onClick="MM_showHideLayers('barco1Org','','show')" value="Ver">
+      <input name="Ocualtar1" type="button" id="Ocualtar1" style=" left: 1328px; top: 445px; height: 35px; width: 86px;" onClick="MM_showHideLayers('barco1Org','','hide')" value="Ocultar"></td>
+      <td><input name="barco2ver" type="button" id="barco2ver" style=" left: 525px; top: 441px; height: 35px; width: 86px;" onClick="MM_showHideLayers('Barco2Org','','show')" value="Ver">
+      <input name="Ocualtar2" type="button" id="Ocualtar2" style=" left: 630px; top: 443px; height: 35px; width: 86px;" onClick="MM_showHideLayers('Barco2Org','','hide')" value="Ocultar"></td>
+      <td><input name="barco3ver" type="button" id="barco3ver" style=" left: 1215px; top: 444px; height: 35px; width: 86px;" onClick="MM_showHideLayers('barco3Org','','show')" value="Ver">
+      <input name="Ocultar3" type="button" id="Ocultar4" style=" left: 868px; top: 443px; height: 35px; width: 86px;" onClick="MM_showHideLayers('barco3Org','','hide')" value="Ocualtar"></td>
+      <td><input name="barco4ver" type="button" id="barco4ver" style="left: 982px; top: 444px; height: 35px; width: 86px;" onClick="MM_showHideLayers('barco4Org','','show')" value="Ver">
+      <input name="Ocualtar4" type="button" id="Ocualtar4" style=" left: 1096px; top: 444px; height: 35px; width: 86px;" onClick="MM_showHideLayers('barco4Org','','hide')" value="Ocultar"></td>
+    </tr>
+  </tbody>
+</table>
+<p style="position: absolute; left: 505px; top: 514px; visibility: hidden">
+	
+	
+
+<img src="Barcos/535.jpg" alt="" width="227" height="320" id="barco1Org"/>
+<img src="Barcos/536.jpg" alt="" width="224" height="320" id="Barco2Org"/>
+<img src="Barcos/537.jpg" alt="" width="227" height="320" id="barco3Org"/>
+<img src="Barcos/538.jpg" alt="" width="227" height="320" id="barco4Org"/>
+		</p>
+</body>
+</html>

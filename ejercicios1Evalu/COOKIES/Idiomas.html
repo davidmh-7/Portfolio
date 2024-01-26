@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idiomas</title>
+</head>
+<body>
+
+    <script src="http://185.60.40.210/dwc/Cookies.js"></script>
+    <script>
+        
+        const idioma = obtenerValorCookie('idioma')
+
+        switch (idioma) {
+            case "1":{
+                location.href="ESP.html"
+                break;
+            }
+            case "2":{
+                location.href="FRA.html"
+                break;
+            }
+            case "3":{
+                location.href="ING.html"
+                break;
+            }
+            case "4":{
+                location.href="EUS.html"
+                break;
+            }
+        
+            default: location.href="ESP.html"
+        }
+
+
+    </script>
+    
+</body>
+</html>

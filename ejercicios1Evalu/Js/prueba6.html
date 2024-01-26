@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <script language="JavaScript">
+            function Saludo(f, c) {
+                alert("Estás en la fila " + f + " Columna " + c);
+            }
+            for (i = 0; i < 5; i++) {
+                document.write("<tr>")
+                for (j = 0; j < 5; j++) {
+                    document.write("<td><button onClick='Saludo(" + i + "," + j + ");'>Plaiandi</button></td>")
+                }
+                document.write("</tr>")
+            }
+
+
+    
+        function cambiarImagen(id) {
+             imagen = document.getElementById(id);
+            if (imagen.src.endsWith("ANegra.gif")) {
+                imagen.src = "AVerde.gif";
+            }
+        }
+
+        window.onload = function () {
+            n = 5;
+            for ( i = 1; i <= n; i++) {
+                 imagenId = "Im" + i;
+                document.write("<img src='ANegra.gif' id='" + imagenId + "' onclick='cambiarImagen(\"" + imagenId + "\")'>");
+            }
+        };
+        </script>
+    </table>
+   
+
+</body>
+
+</html>

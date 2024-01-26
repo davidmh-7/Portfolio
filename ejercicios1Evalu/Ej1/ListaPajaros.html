@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="Examen.css">
+    <script type="text/javascript">
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+    </script>
+</head>
+<body onLoad="MM_preloadImages('Pajaros/2135.jpg','Pajaros/2136.jpg','Pajaros/2137.jpg','Pajaros/2138.jpg','Pajaros/2134.jpg')">
+
+	<h1>PAJAROS</h1>
+	
+	
+	<table width="1606" border="1">
+  <tbody>
+    <tr>
+      <td width="320" height="183"><img src="Pajaros/2134.jpg" alt="" width="320" height="228" id="ortega"/></td>
+      <td width="320"><img src="Pajaros/2135.jpg" alt="" width="320" height="228" id="ciguieña"/></td>
+      <td width="235"><img src="Pajaros/2136.jpg" alt="" width="228" height="320" id="Rabilargo"/></td>
+      <td width="320"><img src="Pajaros/2137.jpg" alt="" width="320" height="227" id="Aguila"/></td>
+      <td width="236"><img src="Pajaros/2138.jpg" alt="" width="228" height="320" id="Pato"/></td>
+      <td width="135" rowspan="2"><input name="button6" type="button" id="button6" style="position: absolute; left: 1313px; top: 401px; width: 91px; height: 29px;" onClick="MM_swapImage('pajarohidden','','Pajaros/2138.jpg',1)" value="Pato"></td>
+    </tr>
+    <tr>
+      <td height="76"><input name="button" type="button" id="button" style="position: absolute; left: 113px; top: 411px; width: 91px; height: 29px;" onClick="MM_swapImage('pajarohidden','','Pajaros/2134.jpg',1)" value="Ortega"></td>
+      <td><input name="button2" type="button" id="button2" style="position: absolute; left: 449px; top: 405px; width: 91px; height: 29px;" onClick="MM_swapImage('pajarohidden','','Pajaros/2135.jpg',1)" value="Cigueña negro ">
+      <input name="button3" type="button" id="button3" style="position: absolute; left: 1021px; top: 401px; width: 91px; height: 29px;" onClick="MM_swapImage('pajarohidden','','Pajaros/2137.jpg',1)" value="Aguila"></td>
+      <td><input name="button4" type="button" id="button4" style="position: absolute; left: 735px; top: 406px; width: 91px; height: 29px;" onClick="MM_swapImage('pajarohidden','','Pajaros/2136.jpg',1)" value="Rabilargo"></td>
+      <td>&nbsp;</td>
+      <td><input name="button5" type="button" id="button5" style="position: absolute; left: 1494px; top: 278px; width: 101px; height: 46px;" onClick="MM_swapImage('pajarohidden','','',0)" value="Borrar"></td>
+    </tr>
+  </tbody>
+</table>
+	<img  alt=""  id="pajarohidden" style="position: absolute; left: 635px; top: 518px;"/>
+
+</body>
+</html>

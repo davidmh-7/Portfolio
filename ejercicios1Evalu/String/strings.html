@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings</title>
+</head>
+
+<body>
+    <input type="text" id="barra">
+    <button id="boton" onclick="escribir()">Escribir</button>
+    <button id="resetear" onclick="recargar()">Recargar</button>
+    <div id="container"></div>
+
+    <script>
+        const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const container = document.getElementById('container');
+        let intervalId;
+
+        function escribir() {
+            const barra = document.getElementById('barra').value;
+            const palabra = barra.toUpperCase();
+            container.innerHTML = ''; 
+
+            document.getElementById('boton').disabled = true;
+            document.getElementById('resetear').disabled = true;
+
+            let valorActual = 0;
+            
+            function mostrarLetra() {
+                if (valorActual < palabra.length) {
+                    const letra = palabra[valorActual];
+
+                    if (/[A-Z]/.test(letra)) {
+                        const img = document.createElement('img');
+                        img.src = `${letra}.gif`;
+                        container.appendChild(img);
+                    } else {
+                       
+                        const img = document.createElement('img');
+                        img.src = 'Blanco.gif';
+                        container.appendChild(img);
+                    }
+
+                    valorActual++;
+                } else {
+                  
+                    document.getElementById('boton').disabled = false;
+                    document.getElementById('resetear').disabled = false;
+
+                    clearInterval(intervalId);
+                }
+            }
+
+            intervalId = setInterval(mostrarLetra, 500);
+        }
+
+        function recargar() {
+            location.reload();
+        }
+    </script>
+
+</body>
+
+</html>
