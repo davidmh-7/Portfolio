@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Colas</title>
+    <script>
+        function siguiente(seccion) {
+            fetch("http://185.60.40.210/dwc/David/gestion.php?seccion=" + seccion)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("La solicitud no se pudo completar correctamente.");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log(`Número actual en ${seccion}: ${data}`);
+                })
+                .catch(error => {
+                    console.error("Error al cargar el archivo:", error);
+                });
+        }
+
+        function cerrarColas() {
+            fetch("http://185.60.40.210/dwc/David/gestion.php?cerrar=true")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("La solicitud no se pudo completar correctamente.");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log("Colas cerradas");
+                })
+                .catch(error => {
+                    console.error("Error al cargar el archivo:", error);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Gestión de Colas</h1>
+    <button onclick="siguiente('Pescaderia')">SIGUIENTE Pescaderia</button>
+    <button onclick="siguiente('Carniceria')">SIGUIENTE Carniceria</button>
+    <button onclick="siguiente('Embutidos')">SIGUIENTE Embutidos</button>
+    <button onclick="siguiente('Pasteleria')">SIGUIENTE Pasteleria</button>
+    <br>
+    <button onclick="cerrarColas()">CERRAR</button>
+</body>
+</html>

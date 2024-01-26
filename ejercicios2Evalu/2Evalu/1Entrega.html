@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .cuadrado {
+        width: 10%;
+        background-color: rgb(225, 228, 20);
+        border: 1px solid rgb(3, 3, 3);
+        height: 100px;
+        position: fixed;
+    }
+
+    a {
+        display: flex;
+        margin-left: 20px;
+
+    }
+</style>
+
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate sapiente officia saepe accusantium ex
+        excepturi possimus voluptatum soluta iusto minima, nam nobis nisi, veritatis vitae. Voluptatibus ullam earum
+        nesciunt ex! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab eius nam earum doloremque, provident
+        illo eaque reprehenderit cumque, corporis consequatur quis obcaecati fugiat possimus pariatur natus ipsa?
+        Recusandae, aspernatur sunt?</p>
+
+
+    <div class="cuadrado" id="cuadro">
+        <a id="linkGoogle" target="_blank" href="https://www.google.com/search?q=${seleccion}">Google</a>
+        <a id="linkBing" href="https://www.bing.com/search?q=${seleccion}">Bing</a>
+        <a id="linkAsk" href="https://www.ask.com/web?q=${seleccion}">ASK</a>
+      
+    <script>
+
+const parrafo = document.querySelector('p')
+        
+        parrafo.addEventListener('click', evento => {
+            const seleccion = window.getSelection().toString();
+            document.getElementById('linkGoogle').href = `https://www.google.com/search?q=${seleccion}`
+            document.getElementById('linkBing').href = `https://www.bing.com/search?q=${seleccion}`
+            document.getElementById('linkAsk').href = `https://www.ask.com/web?q=${seleccion}`
+          })
+
+        document.oncontextmenu = function () { return false }
+
+        window.addEventListener("mousedown", evento => {
+            coordenadas(evento)
+        })
+
+        function coordenadas(evento) {
+            // Get the reference to the 'cuadro' element
+            let cuadro = document.getElementById('cuadro');
+
+            if (evento.button == 2) {
+                let x = evento.clientX
+                let y = evento.clientY
+
+                const maxX = window.innerWidth - cuadro.offsetWidth;
+                const maxY = window.innerHeight - cuadro.offsetHeight;
+
+                x = Math.min(x, maxX);
+                y = Math.min(y, maxY);
+                cuadro.style.top = `${y}px`
+                cuadro.style.left = `${x}px`
+                cuadro.style.visibility = "visible"
+            }
+
+
+
+
+            setTimeout(() => {
+                if (evento.button == 0) {
+                    cuadro.style.visibility = "hidden"
+                }
+            }, 500);
+
+
+        }
+    </script>
+</body>
+
+</html>

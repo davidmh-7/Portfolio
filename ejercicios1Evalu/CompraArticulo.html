@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompraArticulo</title>
+</head>
+<style>
+    .MiImg {
+        max-width: 100%;
+        height: auto;
+        width: 50%;
+    }
+    table {
+        border-collapse: collapse;
+        text-align:center;
+        margin-left: 20%;
+    }
+    table, tr, td {
+        border: 2px solid #666;
+        padding: 10px;
+    }
+    #btnVaciar {
+        position: absolute;
+        top: 40px;
+        left: 150px;
+    }
+    img{
+        width: 60px;
+    }
+</style>
+
+<body>
+    <script src="Carrito.js"></script>
+    <script>
+
+        const idsComprando = JSON.parse(sessionStorage.getItem('Compra'));
+        const idArticulo = sessionStorage.getItem('IdComprando');
+        const item = aArticulos.find(x => x.id == idArticulo);
+
+
+      
+        sCadena = "<table ><tr><td>Articulo</td><td>Imagen</td><td>Cantidad</td><td>Precio</td></tr>";
+       
+            sCadena += "<tr>";
+            sCadena += "<td>" + item.nombre + "</td>";
+            sCadena += "<td><img src=" + item.src() + " class='MiImg'></td>";
+            sCadena += `<td><input type="number" id="cantidad"></td>`
+            sCadena += "<td>" + item.precio + "</td>";
+            sCadena += "<td> <input type='button' id='button' value='Comprar' onclick='Comprar(\"" + idsComprando + "\")'> </td>";
+            sCadena += "</tr>";
+
+        sCadena += "</table>"
+        sCadena += `<img src="atras.png" onclick= 'volver()'>`
+
+        document.write(sCadena);
+
+        function volver() {
+            location.href= "CarritoCompra.html"
+        }
+        function Comprar() {
+        const cantidad = parseInt(document.getElementById('cantidad').value);
+        if (!isNaN(cantidad) && cantidad > 0) {
+            idsComprando[idArticulo] += cantidad;
+            console.log(idsComprando);
+            sessionStorage.setItem('Compra', JSON.stringify(idsComprando));
+            location.href="CarritoCompra.html"
+
+        }}
+
+        
+        
+
+    </script>
+
+
+</body>
+
+</html>

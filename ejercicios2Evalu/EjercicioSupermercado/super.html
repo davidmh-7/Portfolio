@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="contenido"></div>
+
+    <script>
+        LeeElemento()
+
+        function LeeElemento() {
+            fetch("http://185.60.40.210/dwc/David/SupermercadoEntrega.php")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("La solicitud no se pudo completar correctamente.");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    let sHtml = "";
+                    sHtml += '<table border=1>';
+                    data.forEach(element => {
+                        sHtml += "<tr>";
+                        sHtml += "<td>";
+                        sHtml += `<img src="Imagenes/${element.Seccion}.jpg">`;
+                        sHtml += "</td>";
+                        sHtml += "<td>";
+                        sHtml += element.Numero;
+                        sHtml += "</td>";
+                        sHtml += "</tr>";
+                    });
+                    sHtml += "</table>";
+                    contenido.innerHTML = sHtml;
+                })
+                .catch(error => {
+                    console.error("Error al cargar el archivo:", error);
+                });
+        }
+        LeeElemento()
+        setInterval(() => {
+            LeeElemento()
+        }, 2000);
+
+
+    </script>
+</body>
+
+</html>

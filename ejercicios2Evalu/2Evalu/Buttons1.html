@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .tabla {
+        border: 1px solid black;
+        padding: 8px"
+
+    }
+</style>
+
+<body>
+    <div class="tabla" id="demo">Click: <div onmousedown="Botones()"></div>
+    </div>
+    <div id="posicion"></div>
+    <div class="tabla" id="demo">Valor: <span id="valor">1</span></div>
+
+    <script>
+        window.addEventListener("mousemove", eventos => cordenadas(eventos));
+        let click = ""
+        document.addEventListener("mousedown",
+
+        function (event) {
+                (Botones(event))
+
+            });
+        function Botones() {
+
+            if (event.button == 0) {
+                click = "izquierda"
+
+            }
+            if (event.button == 1) {
+                click = "centro"
+
+            }
+            if (event.button == 2) {
+                click = "derecha"
+
+            }
+
+            document.getElementById("demo").innerHTML = click;
+
+        }
+        // Cordenadas
+        function cordenadas(evento) {
+            let x = event.clientX
+            let y = event.clientY
+            let text = "Cordenadas X = " + x + "Cordenadas Y = " + y;
+            document.getElementById("posicion").innerHTML = text;
+        }
+
+    </script>
+    <script>
+        //inavilita el boton derecho 
+        document.oncontextmenu = function () { return false }
+    </script>
+
+    <script>
+        let valor = 1;
+
+        window.addEventListener("wheel", function (event) {
+            if (event.deltaY < 0) {
+                valor++;
+                if (event.altKey) {
+                    valor = valor + 10;
+                }
+            } else {
+                valor--;
+                if (event.altKey) {
+                    valor =  valor - 10;
+                }
+            }
+
+            document.getElementById("valor").textContent = valor;
+        });
+    </script>
+
+</body>
+
+</html>
